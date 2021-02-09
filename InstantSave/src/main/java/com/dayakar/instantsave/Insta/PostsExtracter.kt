@@ -34,7 +34,11 @@ class PostsExtracter{
         const val DATA_PATTERN_END_LENGTH= DATA_PATTERN_END.length
         const val ENTRY_DATA="entry_data"
         const val POST_PAGE="PostPage"
-
+        const val OWNER="owner"
+        const val USERNAME="username"
+        const val  EDGE_MEDIA_TO_CAPTION="edge_media_to_caption"
+        const val TEXT="text"
+        const val TAKEN_AT_TIMESTAMP="taken_at_timestamp"
 
     }
 
@@ -49,26 +53,27 @@ class PostsExtracter{
                 // return@withContext
                 return null
             }
-
             return extractDataFromHtml(htmlRawString)
 
         } catch (e: IOException) {
-            e.printStackTrace()
-            return null
+
+            throw InstaSaverException("${e.message}")
 
         } catch (e: MalformedURLException) {
             e.printStackTrace()
             return null
 
         } catch (e: HttpStatusException) {
-            e.printStackTrace()
-            return null
+
+                throw InstaSaverException("${e.message}")
         } catch (e: UnsupportedMimeTypeException) {
             e.printStackTrace()
             return null
         } catch (e: SocketTimeoutException) {
             e.printStackTrace()
             return null
+        }catch (e:StringIndexOutOfBoundsException){
+            throw InstaSaverException("Unable load post")
         }
 
     }
@@ -81,8 +86,7 @@ class PostsExtracter{
 
         if (responseBody.isNotEmpty()){
 
-            val instaPost=parseJsonFromHtml(responseBody)
-            return instaPost
+            return parseJsonFromHtml(responseBody)
         }else{
             throw InstaSaverException("Error parsing input data check entered url")
         }
@@ -96,7 +100,7 @@ class PostsExtracter{
         if (!jsonData.has(POST_PAGE)) {
             throw InstaPrivateAccountException("Unable to load posts, Account may be private")
         } else {
-            val jsonPostData=jsonData.getJSONArray("PostPage")
+            val jsonPostData=jsonData.getJSONArray(POST_PAGE)
 
             val finalJsonData=jsonPostData.get(0) as JSONObject
 
@@ -116,6 +120,9 @@ class PostsExtracter{
             val shortCodeMedia = graphql.getJSONObject(SHORT_CODE_MEDIA)
             val displayUrl = shortCodeMedia.getString(DISPLAY_URL)
             val isVideo = shortCodeMedia.getBoolean(IS_VIDEO)
+            val caption= getCaption(shortCodeMedia)
+            val userName=getUserName(shortCodeMedia)
+            val timeStamp=shortCodeMedia.getLong(TAKEN_AT_TIMESTAMP)
             if (isVideo) {
                 videoUrl = shortCodeMedia.getString(VIDEO_URL)
             }
@@ -138,12 +145,12 @@ class PostsExtracter{
                 if (edges != null && edges.length() > 0) {
 
                     val multiplePostUrls = getAvailablePosts(edges)
-                    instaPost = InstaPost(multiplePostUrls)
+                    instaPost = InstaPost(userName,multiplePostUrls,caption,timeStamp)
 
                 } else if (edges1 != null && edges1.length() > 0) {
 
                     val multiplePostUrls = getAvailablePosts(edges1)
-                    instaPost = InstaPost(multiplePostUrls)
+                    instaPost = InstaPost(userName,multiplePostUrls,caption,timeStamp)
 
                 } else {
                     if (isVideo) {
@@ -152,7 +159,7 @@ class PostsExtracter{
                         displayUrls.add(displayUrl)
                     }
 
-                    instaPost = InstaPost(displayUrls)
+                    instaPost = InstaPost(userName,displayUrls,caption,timeStamp)
 
                 }
 
@@ -167,6 +174,32 @@ class PostsExtracter{
 
         }
 
+
+    }
+
+    private fun getUserName(shortCodeMedia: JSONObject): String? {
+        return try {
+            shortCodeMedia.getJSONObject(OWNER)
+                .getString(USERNAME)
+                .toString()
+        }catch (e:JSONException){
+            null
+        }
+
+    }
+
+    private fun getCaption(shortCodeMedia: JSONObject): String? {
+        return try {
+            shortCodeMedia.getJSONObject(EDGE_MEDIA_TO_CAPTION)
+                .getJSONArray(EDGES)
+                .getJSONObject(0)
+                .getJSONObject(NODE)
+                .getString(TEXT)
+                .toString()
+                .replace("\n", " ")
+        }catch (e:JSONException){
+            null
+        }
 
     }
 

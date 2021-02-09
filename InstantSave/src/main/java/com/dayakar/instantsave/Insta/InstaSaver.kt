@@ -1,5 +1,6 @@
 package com.dayakar.instantsave.Insta
 
+import com.dayakar.instantsave.Insta.exceptions.InstaSaverException
 import com.dayakar.instantsave.Insta.model.InstaPost
 import kotlinx.coroutines.*
 import java.lang.Exception
@@ -12,8 +13,10 @@ object InstaSaver {
 
 
       private val scope= CoroutineScope(Dispatchers.Main+ Job())
-     suspend fun getInstaPost(url:String):InstaPost?{
-
+     suspend fun getInstaPost(url:String?):InstaPost?{
+       if (url.isNullOrEmpty()){
+           throw InstaSaverException("Input url is empty or provide.")
+       }
        val result= scope.async(Dispatchers.IO){ PostsExtracter().fetchPostFromServer(url)}
         return try {
             result.await()

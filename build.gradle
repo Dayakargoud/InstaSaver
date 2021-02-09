@@ -33,6 +33,6 @@ ext{
     libPomUrl = 'https://github.com/Dayakargoud/InstaSaver'
     libGithubRepo = 'Dayakargoud/InstaSaver'
     libModuleName = 'InstantSave'
-    libModuleDesc = 'Android library for saving Insta reels and posts.'
+    libModuleDesc = 'Android library for saving Instagram posts and reels.'
     libBintrayName = 'InstaSaver'
 }

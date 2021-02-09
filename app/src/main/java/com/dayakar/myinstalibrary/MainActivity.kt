@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.dayakar.instantsave.Insta.InstaSaver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,8 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             val post=InstaSaver.getInstaPost(url)
-            val links= post?.downlodLinks
-            displayText.text=links.toString()
+            val links= "Download Urls = ${post?.downloadLinks}"
+            val userName="User Name = ${post?.userName}\n"
+            val caption="Caption= ${post?.caption}\n"
+            val timeStamp="TimeStamp = ${post?.timestamp}\n"
+            displayText.text= userName+caption+timeStamp+links
         }
 
     }
