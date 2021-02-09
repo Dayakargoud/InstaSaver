@@ -1,7 +1,7 @@
 InstaSaver
 ======
 
-InstaSaver is a simple and powerful library for saving of Instagram Posts and Reels. InstaSaver will allow you to save videos, Images, IGTV and Reels with single click.
+InstaSaver is a simple and powerful kotlin library for saving of Instagram Posts and Reels. InstaSaver will allow you to save videos, Images, IGTV and Reels with single click.
 
 # Gradle
 ```groovy
