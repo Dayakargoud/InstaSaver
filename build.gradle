@@ -29,10 +29,10 @@ task clean(type: Delete) {
 ext{
     //InstantSave Library Info
     libVersionCode = 1
-    libVersionName = '1.0.0'
+    libVersionName = '1.0.1'
     libPomUrl = 'https://github.com/Dayakargoud/InstaSaver'
     libGithubRepo = 'Dayakargoud/InstaSaver'
-    libModuleName = 'InstantSave'
+    libModuleName = 'InstaSaver'
     libModuleDesc = 'Android library for saving Instagram posts and reels.'
     libBintrayName = 'InstaSaver'
 }

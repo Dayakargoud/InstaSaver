@@ -1,4 +1,4 @@
-package com.dayakar.myinstalibrary
+package com.dayakar.sample
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

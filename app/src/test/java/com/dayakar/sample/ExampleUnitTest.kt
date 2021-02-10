@@ -1,4 +1,4 @@
-package com.dayakar.myinstalibrary
+package com.dayakar.sample
 
 import org.junit.Test
 

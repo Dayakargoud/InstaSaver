@@ -1,11 +1,10 @@
-package com.dayakar.myinstalibrary
+package com.dayakar.sample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.dayakar.instantsave.Insta.InstaSaver
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
