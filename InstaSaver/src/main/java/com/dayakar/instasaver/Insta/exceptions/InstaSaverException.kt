@@ -1,4 +1,4 @@
-package com.dayakar.instantsave.Insta.exceptions
+package com.dayakar.instasaver.Insta.exceptions
 
 /*
 * Created By DAYAKAR GOUD BANDARI on 02-02-2021.

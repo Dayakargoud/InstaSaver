@@ -1,8 +1,8 @@
-package com.dayakar.instantsave.Insta
+package com.dayakar.instasaver.Insta
 
-import com.dayakar.instantsave.Insta.exceptions.InstaPrivateAccountException
-import com.dayakar.instantsave.Insta.exceptions.InstaSaverException
-import com.dayakar.instantsave.Insta.model.InstaPost
+import com.dayakar.instasaver.Insta.exceptions.InstaPrivateAccountException
+import com.dayakar.instasaver.Insta.exceptions.InstaSaverException
+import com.dayakar.instasaver.Insta.model.InstaPost
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

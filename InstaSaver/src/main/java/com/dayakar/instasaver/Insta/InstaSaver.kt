@@ -1,7 +1,7 @@
-package com.dayakar.instantsave.Insta
+package com.dayakar.instasaver.Insta
 
-import com.dayakar.instantsave.Insta.exceptions.InstaSaverException
-import com.dayakar.instantsave.Insta.model.InstaPost
+import com.dayakar.instasaver.Insta.exceptions.InstaSaverException
+import com.dayakar.instasaver.Insta.model.InstaPost
 import kotlinx.coroutines.*
 import java.lang.Exception
 

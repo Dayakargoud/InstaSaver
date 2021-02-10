@@ -1,4 +1,4 @@
-package com.dayakar.instantsave
+package com.dayakar.instasaver
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

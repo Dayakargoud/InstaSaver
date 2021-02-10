@@ -29,7 +29,7 @@ task clean(type: Delete) {
 ext{
     //InstantSave Library Info
     libVersionCode = 1
-    libVersionName = '1.0.1'
+    libVersionName = '1.0.3'
     libPomUrl = 'https://github.com/Dayakargoud/InstaSaver'
     libGithubRepo = 'Dayakargoud/InstaSaver'
     libModuleName = 'InstaSaver'

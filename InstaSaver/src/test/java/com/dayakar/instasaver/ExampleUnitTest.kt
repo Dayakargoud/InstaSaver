@@ -1,4 +1,4 @@
-package com.dayakar.instantsave
+package com.dayakar.instasaver
 
 import org.junit.Test
 

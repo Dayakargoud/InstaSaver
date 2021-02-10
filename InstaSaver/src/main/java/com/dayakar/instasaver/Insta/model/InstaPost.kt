@@ -1,6 +1,4 @@
-package com.dayakar.instantsave.Insta.model
-
-import java.sql.Timestamp
+package com.dayakar.instasaver.Insta.model
 
 /*
 * Created By DAYAKAR GOUD BANDARI on 03-02-2021.
