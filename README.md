@@ -6,7 +6,7 @@ InstaSaver is a simple and powerful kotlin library for saving of Instagram Posts
 # Gradle
 ```groovy
 dependencies {
-    implementation 'com.github.dayakar:InstaSaver:1.0.1'
+    implementation 'com.github.dayakar:InstaSaver:1.0.3'
 }
 ```
 ### Let's Download the Posts!
